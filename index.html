@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Interval Timer</title>
+  <meta name="description" content="Configurable work/pause interval timer with audio cues.">
+  <meta name="theme-color" content="#10131a">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="setup" class="screen">
+    <h1>Interval Timer</h1>
+    <form id="setup-form">
+      <label class="field">
+        <span>Work duration (seconds)</span>
+        <input id="in-work" type="number" min="1" max="3600" step="1" value="30" required inputmode="numeric">
+      </label>
+      <label class="field">
+        <span>Pause duration (seconds)</span>
+        <input id="in-pause" type="number" min="1" max="3600" step="1" value="10" required inputmode="numeric">
+      </label>
+      <label class="field">
+        <span>Repetitions</span>
+        <input id="in-reps" type="number" min="1" max="99" step="1" value="5" required inputmode="numeric">
+      </label>
+      <p id="total-label" class="muted">Total: 3:20</p>
+      <button type="submit" class="btn primary">Start</button>
+    </form>
+  </main>
+
+  <main id="timer" class="screen hidden">
+    <p id="rep-label" class="muted">Round 1 / 5</p>
+    <div class="ring-wrap">
+      <svg class="ring" viewBox="0 0 200 200" aria-hidden="true">
+        <circle class="ring-bg" cx="100" cy="100" r="90"></circle>
+        <circle id="ring-fg" class="ring-fg" cx="100" cy="100" r="90"></circle>
+      </svg>
+      <div class="ring-text">
+        <p id="phase-label" aria-live="polite">Work</p>
+        <p id="time-label">0:30</p>
+      </div>
+    </div>
+    <div class="controls">
+      <button id="btn-pause" class="btn primary">Pause</button>
+      <button id="btn-reset" class="btn">Reset</button>
+    </div>
+  </main>
+
+  <audio id="keepalive" src="silence.wav" loop preload="auto"></audio>
+
+  <script src="app.js"></script>
+</body>
+</html>

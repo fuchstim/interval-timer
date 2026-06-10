@@ -1,0 +1,170 @@
+:root {
+  --bg: #10131a;
+  --card: #1a2030;
+  --border: #2a3245;
+  --text: #f2f5f9;
+  --muted: #8a94a6;
+  --accent: #2ecc71;
+  --on-accent: #0b1510;
+}
+
+body[data-phase="pause"] { --accent: #f5a623; --on-accent: #1a1204; }
+body[data-phase="done"]  { --accent: #4ea1ff; --on-accent: #061222; }
+
+* { box-sizing: border-box; }
+
+html { height: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+           env(safe-area-inset-bottom) env(safe-area-inset-left);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.screen {
+  width: min(100%, 420px);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+
+.hidden { display: none !important; }
+
+h1 {
+  margin: 0 0 8px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.muted {
+  color: var(--muted);
+  text-align: center;
+  margin: 0;
+}
+
+#setup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.field input {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.4rem;
+  text-align: center;
+  color: var(--text);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.btn {
+  width: 100%;
+  padding: 16px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  background: #252c3b;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: transform 0.08s ease, background-color 0.2s ease;
+}
+
+.btn:active { transform: scale(0.97); }
+
+.btn.primary {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+}
+
+.controls .btn { flex: 1; }
+
+.ring-wrap {
+  position: relative;
+  width: min(75vw, 320px);
+  aspect-ratio: 1;
+  margin: 8px auto;
+}
+
+.ring {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.ring circle {
+  fill: none;
+  stroke-width: 10;
+}
+
+.ring-bg { stroke: rgba(255, 255, 255, 0.08); }
+
+.ring-fg {
+  stroke: var(--accent);
+  stroke-linecap: round;
+  stroke-dasharray: 565.487;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  transition: stroke-dashoffset 0.1s linear, stroke 0.2s ease;
+}
+
+.ring-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+#phase-label {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+}
+
+#time-label {
+  margin: 0;
+  font-size: clamp(3.2rem, 18vw, 4.6rem);
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
