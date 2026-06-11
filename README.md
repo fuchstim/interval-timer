@@ -28,7 +28,11 @@ test on mobile. Any other static file server works too.
 
 ## Deploy
 
-Copy the files to any static host (GitHub Pages, Netlify, etc.). The app must
+The app is deployed via GitHub Pages from `master` at
+<https://fuchstim.github.io/interval-timer/>. Pushes to `master` go live
+automatically.
+
+It can also be copied to any other static host (Netlify, etc.). The app must
 be served over **HTTPS** (or localhost) for the service worker, install
 prompt, and wake lock to be available. All paths are relative, so hosting
 under a subpath works.
